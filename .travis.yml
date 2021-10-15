@@ -1,17 +1,17 @@
-language: ruby
-rvm:
-  - 2.6.3
-cache: bundler
 os: linux
 
 jobs:
   include:
     - stage: "Verify"
+      language: ruby
+      rvm: 2.6.3
+      cache: bundler
       name: "Run Jekyll Build"
       before_script: chmod +x ./cibuild.sh
       script: ./cibuild.sh
 
     - stage: "Create draft release"
+      language: generic
       if: tag IS present
       name: "Deploy"
       before_deploy:
