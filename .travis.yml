@@ -1,14 +1,15 @@
 language: ruby
 rvm:
   - 2.6.3
+cache: bundler
 os: linux
 
 jobs:
   include:
     - stage: "Verify"
       name: "Run Jekyll Build"
-      before_script: chmod +x ./cibuild.sh
-      script: ./cibuild.sh
+      before_script: chmod +x ./cibuild
+      script: ./cibuild
 
     - stage: "Create draft release"
       if: tag IS present
