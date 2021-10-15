@@ -18,7 +18,7 @@ This guide also assumes that you are at least somewhat familiar with the command
 
 ## Setup
 
-First, download the latest release from the releases page (TODO: link this). Then, follow the
+First, [download the latest release](https://github.com/BrandonDusseau/system-specs/releases/latest) from the releases page. Then, follow the
 instructions in the _Adding Computers_ section below to set up your computers.
 
 To build the site, navigate to this directory in your terminal and run `jekyll build`. Upload the contents of the `public` folder to your web server. Easy!
@@ -61,7 +61,7 @@ The following properties are supported at this time:
 
 * `type`: The type of computer displayed in the sidebar. I usually use "Desktop" or "Laptop".
 
-* `released`: The year the computer was released, displayed in the sidebar. This will be replaced by `acquired` if `custom` is `true`.
+* `released`: The year the computer was released, displayed in the sidebar. This will be ignored and replaced by `acquired` for custom builds.
 
 * `acquired`: The year the computer was purchased or built.
 

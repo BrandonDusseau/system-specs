@@ -8,8 +8,8 @@ jobs:
   include:
     - stage: "Verify"
       name: "Run Jekyll Build"
-      before_script: chmod +x ./cibuild
-      script: ./cibuild
+      before_script: chmod +x ./cibuild.sh
+      script: ./cibuild.sh
 
     - stage: "Create draft release"
       if: tag IS present
