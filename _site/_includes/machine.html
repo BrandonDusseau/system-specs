@@ -26,7 +26,7 @@
         <tr><th>HDD</th><td>{% if machine.hdd.first %}{{ machine.hdd | join: "<br>" }}{% else %}{{ machine.hdd }}{% endif %}</td></tr>
         {% if machine.optical %}<tr><th>Optical</th><td>{% if machine.optical.first %}{{ machine.optical | join: "<br>" }}{% else %}{{ machine.optical }}{% endif %}</td></tr>{% endif %}
         {% if machine.video %}<tr><th>Video</th><td>{% if machine.video.first %}{{ machine.video | join: "<br>" }}{% else %}{{ machine.video }}{% endif %}</td></tr>{% endif %}
-        <tr><th>OS</th><td>{% if machine.os.first %}{{ machine.os | join "<br>" }}{% else %}{{ machine.os }}{% endif %}</td></tr>
+        <tr><th>OS</th><td>{% if machine.os.first %}{{ machine.os | join: "<br>" }}{% else %}{{ machine.os }}{% endif %}</td></tr>
       </table>
     </div>
   </div>

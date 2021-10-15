@@ -30,6 +30,12 @@ tr {
 	cursor: default;
 }
 
+.footer {
+	text-align: center;
+	margin-top: 1rem;
+	font-size: 0.8rem;
+}
+
 .machine {
 	display: flex;
 	flex-flow: column nowrap;

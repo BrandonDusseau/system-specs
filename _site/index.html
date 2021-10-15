@@ -15,17 +15,22 @@ layout: null
 	<h1 class="page-head">System Specifications</h1>
 
 	{% assign current_machines = site.computers | where:"disposed",false | sort:"acquired" | reverse %}
-	{% for machine in current_machines %}
-		{% include machine.html %}
-	{% endfor %}
+	{% if current_machines.size > 0 %}
+		{% for machine in current_machines %}
+			{% include machine.html %}
+		{% endfor %}
+	{% endif %}
 
-	<h2 class="section-head">Past Systems</h2>
+	{% assign past_machines = site.computers | where:"disposed",true | sort:"acquired" | reverse %}
+	{% if past_machines.size > 0 %}
+		<h2 class="section-head">Past Systems</h2>
 
-	{% assign current_machines = site.computers | where:"disposed",true | sort:"acquired" | reverse %}
-	{% for machine in current_machines %}
-		{% include machine.html %}
-	{% endfor %}
+		{% for machine in past_machines %}
+			{% include machine.html %}
+		{% endfor %}
+	{% endif %}
 
 </div>
+<div class="footer">Spec site by Brandon Dusseau &middot; v{{site.version}} &middot; <a href="https://www.github.com/BrandonDusseau/system-specs">GitHub</a></div>
 </body>
 </html>

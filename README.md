@@ -1,10 +1,13 @@
-# System Specs Site
+# System Specs Page
+
+![Screenshot](doc/specs.png)
 
 I created this site to share the specs of my computer collection. Due to demand, I have chosen
 to open source it.
 
-This is a simple Jekyll website that uses a series of YAML files to compile a list of computers and
-their specs. There's not much to it.
+This is a simple Jekyll website that uses a series of YAML files to compile a list of computers and their specs. There's not much to it.
+
+[Live demo](https://www.brandondusseau.com/sys/)
 
 ## Prerequisites
 
