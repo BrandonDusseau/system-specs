@@ -1,0 +1,34 @@
+language: ruby
+rvm:
+  - 2.6.3
+os: linux
+
+jobs:
+  include:
+    - stage: "Verify"
+      name: "Run Jekyll Build"
+      before_script: chmod +x ./script/cibuild
+      script: ./script/cibuild
+
+    - stage: "Create draft release"
+      if: tag IS present
+      name: "Deploy"
+      before_deploy:
+        - jekyll clean
+        - export CLEAN_VERSION=${TRAVIS_TAG//v/}
+        - sed -i.bak "s/version:\sDev/version:\s$CLEAN_VERSION/" _config.yml
+        - rm *.bak
+        - export ZIP_FILENAME="system-specs-${TRAVIS_TAG}"
+        - mkdir $ZIP_FILENAME
+        - cp README.md LICENSE _config.yml $ZIP_FILENAME
+        - mv _site ${ZIP_FILENAME}/
+        - zip -qr ${ZIP_FILENAME}.zip $ZIP_FILENAME
+      deploy:
+        provider: releases
+        file: "${ZIP_FILENAME}.zip"
+        name: "$TRAVIS_TAG"
+        skip_cleanup: true
+        draft: true
+        overwrite: true
+        on:
+          tags: true
