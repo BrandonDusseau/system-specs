@@ -15,7 +15,7 @@ jobs:
       if: tag IS present
       name: "Deploy"
       before_deploy:
-        - bundle exec gjekyll clean
+        - bundle exec jekyll clean
         - export CLEAN_VERSION=${TRAVIS_TAG//v/}
         - "sed -i.bak \"s/version: Dev/version: $CLEAN_VERSION/\" _config.yml"
         - rm *.bak
