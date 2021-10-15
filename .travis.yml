@@ -1,11 +1,11 @@
 os: linux
 language: ruby
+cache: bundler
 rvm: 2.6.3
 
 jobs:
   include:
     - stage: "Verify"
-      cache: bundler
       name: "Run Jekyll Build"
       before_script: chmod +x ./cibuild.sh
       script: ./cibuild.sh
@@ -27,7 +27,7 @@ jobs:
       deploy:
         provider: releases
         token:
-          secure: "c21xBuA9Z0SrK61czhSKIb41zuZBrx0Sx1GgRieqDNpEdatYCEQuxPgNlN+njNpPM6GLMGg5jYOFcMdHK0Gn/IX7n8kjFdvV51HY/JcWvyhjdZTm1RTvWM4cG8lIZMW8snQ6xub0iOHiAO2ChPoNqNwoNJQTj+cT+88A3srLBL7/NFGjKKwfSDqwzk5kC3vomuPRxWOaR9HXotYP6AliZB0c1Kjn0s2v86C27ihtSQUmPFrbbW7/m5Qr+c9TlKDVA6+MLLo/R2GvL24vRhxTTlNPFgyKP8tXweOw+iAFDjDfLZsGg54Rw/JfGORZbiHQYEGEri4mtu1e0ckqhOrTj9uGVtNq5pUllCE8QJhrRpvFcHn/MDBUo5YN7obqJujU65XpZ7ADU0M//jBsxeJd/+/e+vvNS4dNNH/77YRq3TBEJrr4g9WubLXhkoGuApkBIhm5uGP/QH8foyGvkUweoJR8y97FstLNAIsk7mawTWu/QjuZQhIQQqqLMObyk8j0Dea419guzVw+ofqWsHM0NsbAFUqzMpIVsl4WVYx8Y0nyWRx51/zFXAIX9zqQEwW87TvJXu/tN7QNa0HDyF31gD9rkOc0Q41yxoA1pujsy19E+79+iGgrQavTsZodwInJgFmHlC4NY55kQnWFKJP+ZyoGVJyQq1puW0Y0SQpzmm8="
+          secure: "Bj7QNCliAuQ6Rizjr4WyW+Iu4zovUbGZD0Cv5v4tQYlCYi/GYWcUId7D4wTiKVDFChCf3K/JMffUhV4mcYf4OmucWye/kABso+baeQ1kDsLePmekXdvHHPJCMVsIucH3Q6M10/P5jx/f0/Zi2wbclWICCnMfe0Z0fcSrzb8nObjzYXYGiAoxXUnyrMVPqgdzI5qy10t3PnB0JgHnfffV5yICxgqHt5sXCXzUBd9ceXVkU/EKeBYX5m2WnPFF4O1v6FugSp5gcs9TLZgoZfwLfFaLzaOs944dBUoSeAx9rY3cpK0MH/cl31W8aZvOZ9JPaPYIkcObgd/uz+OVitiVC37njqcMxKAZAvSL14dtC3oGPTO8qLGaNh7qFvqhlk7h11dUKYMBEhdbv8dZtUoZC4Nk3Ad9B+f1/EqhoLBGvCqNukmejZK+wH1Jty7DgUFWvc2KkKTxMStGaMZN04MnFcIFHrHijXCq+WT6xB0SJugZajkLQiF/FF89bY9sCB6QD0Ux7XJ544fcbKwJRYcj7vmXAXgwfj65X4l37PTBMt50Ig97e3AgFYZUNY7V6LP9Qnc3lwfOVZvxEu68L+W1BfcgT/PYZ3WgPDrEEBYA4gwjpzwnkLo1MJQslvHvBVGgF2w+NKggQlArBAaHvdiYyQqFNAgD5BGaaJOxBeNx7rs="
         file: "${ZIP_FILENAME}.zip"
         name: "$TRAVIS_TAG"
         skip_cleanup: true
