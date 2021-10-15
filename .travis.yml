@@ -17,7 +17,7 @@ jobs:
       before_deploy:
         - bundle exec gjekyll clean
         - export CLEAN_VERSION=${TRAVIS_TAG//v/}
-        - sed -i.bak "s/version: Dev/version: $CLEAN_VERSION/" _config.yml
+        - "sed -i.bak \"s/version: Dev/version: $CLEAN_VERSION/\" _config.yml"
         - rm *.bak
         - export ZIP_FILENAME="system-specs-${TRAVIS_TAG}"
         - mkdir $ZIP_FILENAME
