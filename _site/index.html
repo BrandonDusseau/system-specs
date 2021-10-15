@@ -1,0 +1,31 @@
+---
+layout: null
+---
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="icon" type="image/png" href="/favicon.png">
+	<link rel="shortcut icon" type="image/png" href="/favicon.png">
+	<title>System Specs</title>
+</head>
+<body>
+<div class="content">
+	<h1 class="page-head">System Specifications</h1>
+
+	{% assign current_machines = site.computers | where:"disposed",false | sort:"acquired" | reverse %}
+	{% for machine in current_machines %}
+		{% include machine.html %}
+	{% endfor %}
+
+	<h2 class="section-head">Past Systems</h2>
+
+	{% assign current_machines = site.computers | where:"disposed",true | sort:"acquired" | reverse %}
+	{% for machine in current_machines %}
+		{% include machine.html %}
+	{% endfor %}
+
+</div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+destination: public
+source: _site
+timezone: America/Detroit
+encoding: utf-8
+incremental: false
+collections:
+  computers:
+    output: false
+defaults:
+  - scope:
+      path: ""
+      type: computers
+    values:
+      disposed: false

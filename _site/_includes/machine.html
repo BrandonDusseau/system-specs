@@ -1,0 +1,33 @@
+{% if machine.short_mfg %}{% assign sidebar_mfg = machine.short_mfg %}{% else %}{% assign sidebar_mfg = machine.mfg %}{% endif %}
+{% if machine.short_model %}{% assign sidebar_model = machine.short_model %}{% else %}{% assign sidebar_model = machine.model %}{% endif %}
+{% assign machine_name_stripped = machine.name | replace: "-","" | replace: " ", "" | downcase %}
+<div class="machine">
+  <div class="machine-head" id='{{ machine_name_stripped }}'>
+    <a href="#{{ machine_name_stripped }}">{{ machine.name }}</a>
+  </div>
+  <div class="machine-content">
+    <div class="machine-side">
+      <div class="machine-thumbnail">
+        <img src="thumbnails/{{ machine.thumb }}" alt="{{ machine.name }}">
+      </div>
+      <p>{% if machine.custom %}Custom Build{% else %}{{ sidebar_mfg }} {{ sidebar_model }}{% endif %}</p>
+      <p class="subtitle">{{ machine.type }}</p>
+      <p class="subtitle">{% if machine.custom %}{{ machine.acquired }}{% else %}{{ machine.released }}{% endif %}</p>
+    </div>
+    <div class="machine-detail">
+      <table cellspacing="0">
+        <tr><th>Acquired</th><td>{{ machine.acquired }}</td></tr>
+        {% unless machine.custom %}<tr><th>Manufacturer</th><td>{{ machine.mfg }}</td></tr>{% endunless %}
+        {% unless machine.custom %}<tr><th>Model</th><td>{{ machine.model }}</td></tr>{% endunless %}
+        {% if machine.custom %}<tr><th>Case</th><td>{{ machine.case }}</td></tr>{% endif %}
+        {% if machine.custom %}<tr><th>Motherboard</th><td>{{ machine.mb }}</td></tr>{% endif %}
+        <tr><th>Processor</th><td>{{ machine.cpu }}</td></tr>
+        <tr><th>Memory</th><td>{{ machine.mem }}</td></tr>
+        <tr><th>HDD</th><td>{% if machine.hdd.first %}{{ machine.hdd | join: "<br>" }}{% else %}{{ machine.hdd }}{% endif %}</td></tr>
+        {% if machine.optical %}<tr><th>Optical</th><td>{% if machine.optical.first %}{{ machine.optical | join: "<br>" }}{% else %}{{ machine.optical }}{% endif %}</td></tr>{% endif %}
+        {% if machine.video %}<tr><th>Video</th><td>{% if machine.video.first %}{{ machine.video | join: "<br>" }}{% else %}{{ machine.video }}{% endif %}</td></tr>{% endif %}
+        <tr><th>OS</th><td>{% if machine.os.first %}{{ machine.os | join "<br>" }}{% else %}{{ machine.os }}{% endif %}</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
