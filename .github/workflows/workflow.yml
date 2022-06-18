@@ -58,4 +58,4 @@ jobs:
       - uses: softprops/action-gh-release@v1
         with:
           draft: true
-          files: "${{ZIP_FILENAME}}"
+          files: "${{ env.ZIP_FILENAME }}"
