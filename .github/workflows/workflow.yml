@@ -32,7 +32,7 @@ jobs:
           bundler-cache: true
       - run: |
           bundle exec jekyll clean
-          "sed -i.bak \"s/version: Dev/version: $CLEAN_VERSION/\" _config.yml"
+          sed -i.bak \"s/version: Dev/version: $CLEAN_VERSION/\" _config.yml
           rm *.bak
           mkdir dist
           cp README.md LICENSE _config.yml dist/
